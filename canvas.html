@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+<body>
+<canvas id="canvas" width="450" height="360"></canvas>
+<script>
+
+    var canvas = document.getElementById("canvas"),
+            r = 10,
+            ctx = canvas.getContext("2d"),
+            img = new Image();
+
+    img.src = "images/tuku3.jpg";
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+    }
+
+    function convertCanvasToImage(canvas) {
+        var image = new Image();
+        image.src = canvas.toDataURL("image/png");
+        return image;
+        console.log(image);
+    }
+    convertCanvasToImage("canvas");
+
+
+    /*
+    var moveToRight = function() {
+        ctx.drawImage(img, 0, 0);
+        ctx.globalCompositeOperation = "source-over";
+        ctx.font = "30px 黑体";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#000000";
+        ctx.fillText("textAlign=center", r, 200);
+        r = r + 10;
+    }
+    setInterval(moveToRight, 200);
+    */
+
+</script>
+</body>
+</html>

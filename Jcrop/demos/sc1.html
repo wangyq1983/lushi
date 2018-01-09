@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset ="utf-8" >
+
+<title> Insert title here </title >
+
+<script type ="text/javascript" src= "../js/jquery.min.js"></script >
+
+<script type ="text/javascript" >
+
+$(document).ready( function (){
+
+$( "#i_1" ).load( function(){
+
+url = $("#i_1" ).contents().find( "#pic").html();
+console.log(url);
+    $( "#tag_img" ).html(url);
+
+
+});
+
+
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div id= "tag_img">
+
+</div>
+
+<form enctype ="multipart/form-data" action= "upload2.php" method ="post" target= "upload_target">
+
+<input type= "file" name ="img" class= "file" value ="" />
+
+<input type= "submit" name ="uploadimg" value= "上传" />
+
+</form>
+
+<iframe id= "i_1" name = "upload_target" style="display: none"></iframe >
+<div id="show_img">
+
+</div>
+</body>
+
+</html>

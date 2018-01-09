@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>炉石传说--卡牌生成器</title>
+    <link rel="stylesheet" href="css.css"/>
+    <script src="jquery-1.10.1.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        $(function(){
+
+            $(document).on("click",".ok_btn",function(){
+
+                alert($('#lushi_form').serialize());
+                $.ajax({
+                    type:"post",
+                    dataType:"html",
+                    url:"show.php",
+                    data:$('#lushi_form').serialize(),
+                    success: function (data) {
+                        //window.location.href="show.php";
+
+                        var strresult=data;
+                        alert(strresult);
+                        //加载最大可退金额
+                        $("#spanMaxAmount").html(strresult);
+                    },
+                    error: function(data) {
+                        alert("error:"+data);
+                    }
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+<form id="lushi_form">
+    <div class="top">
+        <div class="logo"></div>
+    </div>
+    <div class="menu">
+        <ul>
+            <a href="#" class="cur">卡牌制作</a>
+            <a href="#aaa">卡牌分想</a>
+            <a href="#">论坛交流</a>
+            <a href="#">活动专区</a>
+        </ul>
+    </div>
+    <div class="main clearfix">
+        <div id="m_left">
+            <label><input type="checkbox" name="jinka" value="jk" /> 金卡</label>
+            <div class="c_type">
+                <div class="c_t">卡牌分类：</div>
+                <div class="c_b">
+                    <label><input type="radio" name="kpfl" value="pucong" checked />仆从</label>
+                    <label><input type="radio" name="kpfl" value="fashu" />法术</label>
+                    <label><input type="radio" name="kpfl" value="wuqi" />武器</label>
+                </div>
+            </div>
+            <div class="c_type h60">
+                <div class="c_t">品质分类：</div>
+                <div class="c_b">
+                    <label><input type="radio" name="pzfl" value="putong" /><span class="putong w_24p24 b_size24">普通</span></label>
+                    <label><input type="radio" name="pzfl" value="xiyou" checked /><span class="xiyou w_24p24 b_size24">稀有</span></label>
+                    <label><input type="radio" name="pzfl" value="shishi" /><span class="shishi w_24p24 b_size24">史诗</span></label>
+                    <label><input type="radio" name="pzfl" value="chuanshuo" /><span class="chuanshuo w_24p24 b_size24">传说</span></label>
+                </div>
+            </div>
+
+            <div class="c_type h60">
+                <div class="c_t">卡牌数值：</div>
+                <div class="c_b">
+                    <div class="fl fali">
+                        法力：<input type="text" class="sz" name="fali" />
+                    </div>
+                    <div class="fl hp">
+                        生命：<input type="text" class="sz" name="hp" />
+                    </div>
+                    <div class="fl sh">
+                        伤害：<input type="text" class="sz" name="sh" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="c_type h60">
+                <div class="c_t">卡牌名称：</div>
+                <div class="c_b">
+                    <input type="text" id="kp_name" name="kp_name" /><div class="name_ok">ok</div>
+                </div>
+            </div>
+            <div class="c_type clearfix">
+            <div class="c_t">卡牌描述：</div>
+            <div class="c_b">
+
+               <textarea rows="5" cols="40" placeholder="战吼：获得一个空的法力水晶。亡语：失去一个法力水晶" class="kpinfo_text" name="kpinfo_text"></textarea>
+            </div>
+        </div>
+            <div class="c_type h60">
+                <div class="c_t">种族分类：</div>
+                <div class="c_b">
+                    <input type="text" class="zhongzu" name="zhongzu" />
+                </div>
+            </div>
+            <div class="c_type h60">
+                <div class="c_t">图片上传：</div>
+                <div class="c_b">
+                    <input type="file" />
+                </div>
+                <input type="text" class="img_path1" name="img_path1" value="" />
+            </div>
+            <div class="c_type h60">
+                使用分想素材库：
+            </div>
+            <div class="img_list clearfix">
+                <ul class="clearfix">
+                    <li><img src="images/tuku1.jpg" /> </li>
+                    <li><img src="images/tuku2.jpg" /> </li>
+                    <li><img src="images/tuku3.jpg" /> </li>
+                    <li><img src="images/tuku4.jpg" /> </li>
+                </ul>
+            </div>
+        </div>
+        <a name="aaa"></a>
+        <div id="m_right">
+            <div class="kp_bg pt_suicong">
+                <div class="kpname">
+                    <!--
+                    <span class="name_f1">炎</span>
+                    <span class="name_f2">魔</span>
+                    <span class="name_f3">之</span>
+                    <span class="name_f4">王</span>
+                    <span class="name_f5">拉</span>
+                    <span class="name_f6">格</span>
+                    <span class="name_f7">纳</span>
+                    <span class="name_f8">罗</span>
+                    <span class="name_f9">斯</span>
+                    -->
+
+                </div>
+                <div class="kpfali"></div>
+                <div class="kphp"></div>
+                <div class="kpsh"></div>
+                <div class="kppz"></div>
+                <div class="kp_info">
+                    战吼：获得一个空的法力水晶。亡语：失去一个法力水晶
+                </div>
+                <div class="zhongzu_title"></div>
+            </div>
+            <div class="touxiang"><img src="images/1.jpg" /></div>
+            <input type="submit" class="ok_btn" value=""/>
+        </div>
+    </div>
+</form>
+<div id="spanMaxAmount">
+
+</div>
+</body>
+</html>
